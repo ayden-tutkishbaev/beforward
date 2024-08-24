@@ -410,7 +410,7 @@ async def send_answer_to_asked_question(message: Message, bot: Bot, state: FSMCo
         await message.answer("Действие отменено", reply_markup=await rp.admin_panel(message.chat.id))
     else:
         try:
-            await bot.send_message(chat_id=data['to'], text=f"⬇️ <b>Вы получили ответ на свой вопрос!</b>")
+            await bot.send_message(chat_id=data['to'], text=f"⬇️ <b>Вы получили ответ на свой вопрос от</b> <i>{message.from_user.full_name}</i>")
             await message.send_copy(chat_id=data['to'])
             await state.clear()
             await message.answer("Отправлено успешно!", reply_markup=await rp.admin_panel(message.chat.id))
